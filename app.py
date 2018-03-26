@@ -44,18 +44,14 @@ def plot_data(stock_df, data_sel):
 #default Flask settings
 app = Flask(__name__)
 
-#app.vars = {}
-
-#ticker= 'FB'
-
 #@app.route('/')
 #def index():
 #  return render_template('index.html')
 @app.route('/')
 def main():
-	return redirect('/my_form_post')
+	return redirect('/index')
 
-@app.route('/index', methods=['GET','POST'])
+@app.route('/index', methods=['GET'])
 def index():
 	return render_template('index.html')
 
