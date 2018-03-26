@@ -4,7 +4,8 @@ import simplejson as json
 import pandas as pd
 import datetime as dt
 import bokeh
-from bokeh.plotting import figure, components
+from bokeh.plotting import figure
+from bokeh.embed import components
 
 
 #get ticker symbol, set date range, pull data from Quandl, and put in dataframe
@@ -24,16 +25,17 @@ def get_data(ticker):
 	return stock_df
 
 #graph data
-def plot_data(stock_df, data_sel): 
-    p = figure(title="Quandl Stock Prices", x_axis_label='Date', y_axis_label='Price')
-    if 'closing' in data_sel:	
-        p.line(stock_df['Date'], stock_df['Close'], legend="Closing Price", line_width=2)
-	if 'opening' in data_sel:	
+def plot_data(stock_df, data_sel):
+	p = figure(title="Quandl Stock Prices", x_axis_label='Date', y_axis_label='Price')
+	
+	if 'closing' in data_sel:
+		p.line(stock_df['Date'], stock_df['Close'], legend="Closing Price", line_width=2)
+	if 'opening' in data_sel:
 		p.line(stock_df['Date'], stock_df['Open'], legend="Opening Price", line_width=2, line_color = "red")
 	if 'adj_opening' in data_sel:
 		p.line(stock_df['Date'], stock_df['Adj. Open'], legend="Adjusted Opening Price", line_width=2, line_color = "black")
-    if 'adj_opening' in data_sel:	
-    	p.line(stock_df['Date'], stock_df['Adj. Close'], legend="Adjusted Closing Price", line_width=2, line_color = "purple")
+	if 'adj_opening' in data_sel:
+		p.line(stock_df['Date'], stock_df['Adj. Close'], legend="Adjusted Closing Price", line_width=2, line_color = "purple")
 	script, div = components(p)
 	return script, div
 
@@ -51,11 +53,11 @@ app = Flask(__name__)
 #  return render_template('index.html')
 @app.route('/')
 def main():
-    return redirect('/my_form_post')
+	return redirect('/my_form_post')
 
 @app.route('/index', methods=['GET','POST'])
 def index():
-    return render_template('index.html')
+	return render_template('index.html')
 
 #@app.route('/about')
 #def about():
