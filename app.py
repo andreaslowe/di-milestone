@@ -61,9 +61,13 @@ def about():
 def index():
     tick_str = request.form.get('ticker')
     data_sel =  request.form.getlist('features')
-    df = get_data(tick_str)    
+    return render_template('index.html', tick_str = tick_str, data_sel = data_sel)
+
+@app.route('/plotpage', methods=['GET','POST'])
+def plotpage():
+	df = get_data(tick_str)    
     script, div = plot_data(df, data_sel)
-    return render_template('stock.html', script=script, div=div)
+	return render_template('stock.html', script=script, div=div)
 
 
 if __name__ == '__main__':
