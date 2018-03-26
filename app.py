@@ -44,12 +44,9 @@ def plot_data(stock_df, data_sel):
 #default Flask settings
 app = Flask(__name__)
 
-#@app.route('/')
-#def index():
-#  return render_template('index.html')
 @app.route('/')
 def main():
-	return redirect('/stockticker')
+	return redirect('/stock') #changed redirect
 
 @app.route('/index', methods=['GET'])
 def index():
@@ -60,8 +57,8 @@ def about():
   return render_template('about.html')
 
 #code to use text box to get stock ticker info and check boxes for user input
-@app.route('/stockticker', methods=['POST'])
-def stockticker():
+@app.route('/stock', methods=['POST'])
+def stock():
     tick_str = request.form['tickerText']
     ticker = tick_str.upper()
 
