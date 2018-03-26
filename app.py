@@ -20,7 +20,7 @@ def get_data(ticker):
 
 	r = requests.get(myURL)
 	rawdata = r.json()['dataset_data']
-	stock_df = pf.DataFrame(rawdata['data'], columns = rawdata['column_names'])
+	stock_df = pd.DataFrame(rawdata['data'], columns = rawdata['column_names'])
 	stock_df['Date'] =pd.to_datetime(stock_df['Date'])
 	return stock_df
 
