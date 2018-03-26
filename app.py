@@ -63,7 +63,7 @@ def my_form_post():
 
 	df = get_data(ticker)
 	script, div = plot_data(df)
-	return render_template('plot.html', script=script, div=div, ticker=apps.vars['ticker'])
+	return render_template('plot.html', script=script, div=div, ticker=ticker)
 
 
 if __name__ == '__main__':
