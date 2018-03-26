@@ -51,7 +51,7 @@ app = Flask(__name__)
 #  return render_template('index.html')
 @app.route('/')
 def main():
-    return redirect('/index')
+    return redirect('/my_form_post')
 
 @app.route('/index', methods=['GET','POST'])
 def index():
