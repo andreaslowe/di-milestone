@@ -25,7 +25,7 @@ def get_data(ticker):
 
 #graph data
 def plot_data(stock_df): #, data_sel
-	p = figure(title="Quandl Stock Prices", x_axis_label='Date', y_axis_label='Price')
+    p = figure(title="Quandl Stock Prices", x_axis_label='Date', y_axis_label='Price')
 	#if data_sel == 'closing':	
 	p.line(stock_df['Date'], stock_df['Close'], legend="Closing Price", line_width=2)
 	script, div = components(p)
@@ -45,29 +45,29 @@ app = Flask(__name__)
 #  return render_template('index.html')
 @app.route('/')
 def main():
-	return redirect('/index')
+    return redirect('/index')
 
 @app.route('/index', methods=['GET','POST'])
 def index():
-	return render_template('index.html')
+    return render_template('index.html')
 
 #@app.route('/about')
 #def about():
-#  return render_template('about.html')
+ # return render_template('about.html')
 
  #code to use text box to get stock ticker info and check boxes for user input
 @app.route('/my_form_post', methods=['POST'])
 def my_form_post():
-	tick_str = request.form['tickerText']
-	ticker = tick_str.upper()
+    tick_str = request.form['tickerText']
+    ticker = tick_str.upper()
 
-	df = get_data(ticker)
-	script, div = plot_data(df)
-	return render_template('plot.html', script=script, div=div, ticker=ticker)
+    df = get_data(ticker)
+    script, div = plot_data(df)
+    return render_template('plot.html', script=script, div=div, ticker=ticker)
 
 
 if __name__ == '__main__':
-	port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
 	#app.run(port=33507)
   
