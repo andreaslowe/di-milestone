@@ -57,8 +57,8 @@ def about():
 def index():
     return render_template('index.html')
 
-@app.route('/plot', methods=['GET','POST'])
-def plot():
+@app.route('/plotpage', methods=['GET','POST'])
+def plotpage():
 	tick_str = request.form.get('ticker')
 	data_sel =  request.form.getlist('features')
 	df = get_data(tick_str)
