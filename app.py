@@ -34,7 +34,7 @@ def plot_data(stock_df): #, data_sel
 #default Flask settings
 app = Flask(__name__)
 
-app.vars = {}
+#app.vars = {}
 
 #ticker= 'FB'
 
@@ -54,9 +54,9 @@ def index():
 #  return render_template('about.html')
 
  #code to use text box to get stock ticker info and check boxes for user input
-@app.route('/', methods=['POST'])
+@app.route('/my_form_post', methods=['POST'])
 def my_form_post():
-    tick_str = request.form['tickerText']
+	tick_str = request.form['tickerText']
 	app.vars['ticker'] = tick_str.upper()
 
 	df = get_data(apps.vars['ticker'])
