@@ -68,7 +68,8 @@ def my_form_post():
     ticker = tick_str.upper()
 
     df = get_data(ticker)
-    script, div = plot_data(df)
+    data_sel =  ['closing']
+    script, div = plot_data(df, data_sel)
     return render_template('plot.html', script=script, div=div, ticker=ticker)
 
 
