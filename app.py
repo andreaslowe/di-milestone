@@ -59,7 +59,8 @@ def about():
 #code to use text box to get stock ticker info and check boxes for user input
 @app.route('/index', methods=['POST'])
 def index():
-    tick_str = request.form.get('ticker')
+    #tick_str = request.form.get('ticker')
+    tick_str = 'FB'
     data_sel =  request.form.getlist('features')
     df = get_data(tick_str)    
     script, div = plot_data(df, data_sel)
