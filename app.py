@@ -46,7 +46,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-	return redirect('/index') #changed redirect
+	return redirect('/stockpage') #changed redirect
 
 @app.route('/index', methods=['GET'])
 def index():
