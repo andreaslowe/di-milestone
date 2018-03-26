@@ -60,9 +60,8 @@ def about():
 @app.route('/index', methods=['POST'])
 def index():
     #tick_str = request.form.get('ticker')
-    tick_str = 'FB'
     data_sel =  request.form.getlist('features')
-    df = get_data(tick_str)    
+    df = get_data('FB')    
     script, div = plot_data(df, data_sel)
     return render_template('stock.html', script=script, div=div)
 
