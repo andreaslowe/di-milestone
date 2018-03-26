@@ -3,7 +3,9 @@ import requests
 import simplejson as json
 import pandas as pd
 import datetime as dt
-from bokeh.plotting import figure, output_file, show
+import bokeh
+from bokeh.plotting import figure, components
+
 
 #get ticker symbol, set date range, pull data from Quandl, and put in dataframe
 def get_data(ticker):
@@ -57,10 +59,10 @@ def index():
 @app.route('/my_form_post', methods=['POST'])
 def my_form_post():
 	tick_str = request.form['tickerText']
-	app.vars['ticker'] = tick_str.upper()
+	ticker = tick_str.upper()
 
-	df = get_data(apps.vars['ticker'])
-	script, div = plot_data(f)
+	df = get_data(ticker)
+	script, div = plot_data(df)
 	return render_template('plot.html', script=script, div=div, ticker=apps.vars['ticker'])
 
 
