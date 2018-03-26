@@ -49,19 +49,19 @@ app = Flask(__name__)
 #  return render_template('index.html')
 @app.route('/')
 def main():
-	return redirect('/index')
+	return redirect('/stockticker')
 
-@app.route('/index', methods=['GET'])
-def index():
-	return render_template('index.html')
+#@app.route('/index', methods=['GET'])
+#def index():
+#	return render_template('index.html')
 
 #@app.route('/about')
 #def about():
  # return render_template('about.html')
 
  #code to use text box to get stock ticker info and check boxes for user input
-@app.route('/my_form_post', methods=['POST'])
-def my_form_post():
+@app.route('/stockticker', methods=['POST'])
+def stockticker():
     tick_str = request.form['tickerText']
     ticker = tick_str.upper()
 
