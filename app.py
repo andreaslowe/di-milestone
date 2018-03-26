@@ -26,14 +26,14 @@ def get_data(ticker):
 #graph data
 def plot_data(stock_df, data_sel): 
     p = figure(title="Quandl Stock Prices", x_axis_label='Date', y_axis_label='Price')
-	if 'closing' in data_sel:	
-	   p.line(stock_df['Date'], stock_df['Close'], legend="Closing Price", line_width=2)
+    if 'closing' in data_sel:	
+        p.line(stock_df['Date'], stock_df['Close'], legend="Closing Price", line_width=2)
 	if 'opening' in data_sel:	
-	   p.line(stock_df['Date'], stock_df['Open'], legend="Opening Price", line_width=2, line_color = "red")
-	if 'adj_opening' in data_sel:	
-	   p.line(stock_df['Date'], stock_df['Adj. Open'], legend="Adjusted Opening Price", line_width=2, line_color = "black")
+		p.line(stock_df['Date'], stock_df['Open'], legend="Opening Price", line_width=2, line_color = "red")
+	if 'adj_opening' in data_sel:
+		p.line(stock_df['Date'], stock_df['Adj. Open'], legend="Adjusted Opening Price", line_width=2, line_color = "black")
     if 'adj_opening' in data_sel:	
-	   p.line(stock_df['Date'], stock_df['Adj. Close'], legend="Adjusted Closing Price", line_width=2, line_color = "purple")
+    	p.line(stock_df['Date'], stock_df['Adj. Close'], legend="Adjusted Closing Price", line_width=2, line_color = "purple")
 	script, div = components(p)
 	return script, div
 
