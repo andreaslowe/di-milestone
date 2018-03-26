@@ -36,26 +36,31 @@ app = Flask(__name__)
 
 app.vars = {}
 
-ticker= 'FB'
+#ticker= 'FB'
 
 #@app.route('/')
 #def index():
 #  return render_template('index.html')
+@app.route('/')
+def main():
+	return redirect('/index')
 
 @app.route('/index', methods=['GET','POST'])
 def index():
 	return render_template('index.html')
 
-@app.route('/about')
-def about():
-  return render_template('about.html')
+#@app.route('/about')
+#def about():
+#  return render_template('about.html')
 
  #code to use text box to get stock ticker info and check boxes for user input
 @app.route('/', methods=['POST'])
 def my_form_post():
-    text = request.form['ticker_symbol']
-    ticker_input = text.upper()
-    return ticker_input
+    tickStr = request.form['tickerText']
+	reqList = request.form['priceCheck'] # checkboxes
+
+	app.vars['ticker'] = tickStr.upper()
+	app.vars['priceReqs'] = reqList
 
 
 
