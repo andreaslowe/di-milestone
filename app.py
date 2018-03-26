@@ -46,7 +46,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-	return redirect('/stock') #changed redirect
+	return redirect('/stockpage') #changed redirect
 
 @app.route('/index', methods=['GET'])
 def index():
@@ -57,7 +57,7 @@ def about():
   return render_template('about.html')
 
 #code to use text box to get stock ticker info and check boxes for user input
-@app.route('/stock', methods=['POST'])
+@app.route('/stockpage', methods=['POST'])
 def stock():
     tick_str = request.form['tickerText']
     ticker = tick_str.upper()
@@ -65,7 +65,7 @@ def stock():
     df = get_data(ticker)
     data_sel =  ['closing']
     script, div = plot_data(df, data_sel)
-    return render_template('plot.html', script=script, div=div, ticker=ticker)
+    return render_template('stock.html', script=script, div=div, ticker=ticker)
 
 
 if __name__ == '__main__':
