@@ -63,7 +63,6 @@ def plotpage():
 	data_sel =  request.form.getlist('features')
 	df = get_data(tick_str)
 	script, div = plot_data(df, data_sel)
-	print tick_str
 	return render_template('stock.html', script=script, div=div)
 
 
