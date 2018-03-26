@@ -12,12 +12,11 @@
 <body>
 <H1>Lowe Stock Ticker Milestone Project</H1>
 
-      <form id='homebutton' method='post' action='index' >
+      <form method='post' action='index' >
         <p>ticker <input type = "text" name = "Stock Ticker" /></p>
         <p> <input type='submit' value='Back' /></p>
       </form>
 
-      <h1>Stock price for {{ ticker | safe }} </h1>
 
       {{ script|safe }}
       {{ div|safe }}
