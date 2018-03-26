@@ -36,8 +36,8 @@ def plot_data(stock_df, data_sel):
 		p.line(stock_df['Date'], stock_df['Adj. Open'], legend="Adjusted Opening Price", line_width=2, line_color = "black")
 	if 'adj_closing' in data_sel:
 		p.line(stock_df['Date'], stock_df['Adj. Close'], legend="Adjusted Closing Price", line_width=2, line_color = "purple")
-	script, div = components(p)
-	return script, div
+		script, div = components(p)
+		return script, div
 
 
 
@@ -54,7 +54,7 @@ def main():
 
 @app.route('/about')
 def about():
-  return render_template('about.html')
+	return render_template('about.html')
 
 #code to use text box to get stock ticker info and check boxes for user input
 @app.route('/index', methods=['GET','POST'])
@@ -64,7 +64,7 @@ def index():
 @app.route('/plotpage', methods=['GET','POST'])
 def plotpage():
 	tick_str = request.form.get('ticker')
-    data_sel =  request.form.getlist('features')
+	data_sel =  request.form.getlist('features')
 	df = get_data(tick_str)
 	script, div = plot_data(df, data_sel)
 	return render_template('stock.html', script=script, div=div)
