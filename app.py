@@ -17,7 +17,8 @@ def get_data(ticker):
 
 	r = requests.get(myURL)
 	rawdata = r.json()['dataset_data']
-	stock_df = df.DataFrame(rawdata['data'], columns = rawdata['column_names'])
+	stock_df = pf.DataFrame(rawdata['data'], columns = rawdata['column_names'])
+	stock_df['Date'] =pd.to_datetime(stock_df['Date'])
 	return stock_df
 
 #graph data
@@ -58,9 +59,9 @@ def my_form_post():
     tick_str = request.form['tickerText']
 	app.vars['ticker'] = tick_str.upper()
 
-	stock_df = get_data(apps.vars['ticker'])
-	script, div = plot_data(stock_df)
-	return render_template('plot.html', script=script, div=div)
+	df = get_data(apps.vars['ticker'])
+	script, div = plot_data(f)
+	return render_template('plot.html', script=script, div=div, ticker=apps.vars['ticker'])
 
 
 
