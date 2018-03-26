@@ -26,7 +26,7 @@ def get_data(ticker):
 
 #graph data
 def plot_data(stock_df, data_sel):
-	p = figure(title="Quandl Stock Prices", x_axis_label='Date', y_axis_label='Price')
+	p = figure(title="Quandl Stock Prices", x_axis_label='Date', y_axis_label='Price',x_axis_type='datetime')
 	
 	if 'closing' in data_sel:
 		p.line(stock_df['Date'], stock_df['Close'], legend="Closing Price", line_width=2)
@@ -57,8 +57,8 @@ def about():
 def index():
     return render_template('index.html')
 
-@app.route('/plotpage', methods=['GET','POST'])
-def plotpage():
+@app.route('/plot', methods=['GET','POST'])
+def plot():
 	tick_str = request.form.get('ticker')
 	data_sel =  request.form.getlist('features')
 	df = get_data(tick_str)
