@@ -34,7 +34,7 @@ def plot_data(stock_df, data_sel):
 		p.line(stock_df['Date'], stock_df['Open'], legend="Opening Price", line_width=2, line_color = "red")
 	if 'adj_opening' in data_sel:
 		p.line(stock_df['Date'], stock_df['Adj. Open'], legend="Adjusted Opening Price", line_width=2, line_color = "black")
-	if 'adj_opening' in data_sel:
+	if 'adj_closing' in data_sel:
 		p.line(stock_df['Date'], stock_df['Adj. Close'], legend="Adjusted Closing Price", line_width=2, line_color = "purple")
 	script, div = components(p)
 	return script, div
@@ -58,14 +58,14 @@ def about():
 
 #code to use text box to get stock ticker info and check boxes for user input
 @app.route('/stockpage', methods=['POST'])
-def stock():
+def stockpage():
     tick_str = request.form['tickerText']
     ticker = tick_str.upper()
+    data_sel =  request.form.getlist('features')
 
-    df = get_data(ticker)
-    data_sel =  ['closing']
+    df = get_data(ticker)    
     script, div = plot_data(df, data_sel)
-    return render_template('stock.html', script=script, div=div, ticker=ticker)
+    return render_template('stock.html', script=script, div=div)
 
 
 if __name__ == '__main__':
