@@ -36,8 +36,8 @@ def plot_data(stock_df, data_sel):
 		p.line(stock_df['Date'], stock_df['Adj. Open'], legend="Adjusted Opening Price", line_width=2, line_color = "black")
 	if 'adj_closing' in data_sel:
 		p.line(stock_df['Date'], stock_df['Adj. Close'], legend="Adjusted Closing Price", line_width=2, line_color = "purple")
-		script, div = components(p)
-		return script, div
+	script, div = components(p)
+	return script, div
 
 
 
