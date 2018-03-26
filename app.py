@@ -27,7 +27,7 @@ def get_data(ticker):
 def plot_data(stock_df): #, data_sel
 	p = figure(title="Quandl Stock Prices", x_axis_label='Date', y_axis_label='Price')
 	#if data_sel == 'closing':	
-	p.line(stock_df['Date'], stock_df['Close'], legend="Selection", line_width=2)
+	p.line(stock_df['Date'], stock_df['Close'], legend="Closing Price", line_width=2)
 	script, div = components(p)
 	return script, div
 
@@ -66,10 +66,8 @@ def my_form_post():
 	return render_template('plot.html', script=script, div=div, ticker=apps.vars['ticker'])
 
 
-
-
 if __name__ == '__main__':
-	#port = int(os.environ.get("PORT", 5000))
-    #app.run(host='0.0.0.0', port=port)
-	app.run(port=33507)
+	port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+	#app.run(port=33507)
   
