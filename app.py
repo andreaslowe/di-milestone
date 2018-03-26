@@ -13,8 +13,7 @@ def get_data(ticker):
 	begin_date = begin_date.strftime("%Y-%m-%d")
 
 	#import data
-	myURL = 'https://www.quandl.com/api/v3/datasets/WIKI/' + ticker + 
-	'/data.json?api_key=Ny7LjkeNwh1aFxjHewmJ&start_date=' + begin_date + '&end_date=' + current_date
+	myURL = 'https://www.quandl.com/api/v3/datasets/WIKI/' + ticker + '/data.json?api_key=Ny7LjkeNwh1aFxjHewmJ&start_date=' + begin_date + '&end_date=' + current_date
 
 	r = requests.get(myURL)
 	rawdata = r.json()['dataset_data']
