@@ -3,16 +3,19 @@
 
 <head>
 <link
-    href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.6.min.css"
+    href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.css"
     rel="stylesheet" type="text/css">
 
-<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.6.min.js"></script>
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.js"></script>
 
 </head>
 <body>
 
-      {{ script|safe }}
-      {{ div|safe }}
+    <div>
+        <h1>Stock Prices Plot</h1>
+        {{ script|safe }}
+        {{ div|safe }}
+    </div>
 
 </body>
 </html>
