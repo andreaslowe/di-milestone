@@ -61,8 +61,7 @@ def about():
 def index():
     tick_str = request.form['tick_str']
     data_sel =  request.form.getlist('features')
-    ticker = 'FB'
-    df = get_data(ticker)    
+    df = get_data(tick_str)    
     script, div = plot_data(df, data_sel)
     return render_template('stock.html', script=script, div=div)
 
